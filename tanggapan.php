@@ -19,5 +19,17 @@ echo'
     <p>'.$tgp['tanggapan'].'</p>
     </div>';
     }
+    echo'<div class="card-footer">
+    <form action="'.base_url('petugas/tambahtanggapan/').$detailaduan[0]['id_pengaduan'].'" method="POST">
+    <div class="form-floating">
+    <textarea class="form-control" id="tanggapan" name="tanggapan" required></textarea>
+    <label for="tanggapan"> Tanggapan Petugas </label>
+    <button type="submit" class="btn btn-sm btn-primary mt-3 float-end">Kirim</button>
+    
+    </div>
+    </form>
+    </div>';
+
   echo '
 </div>';
+?>

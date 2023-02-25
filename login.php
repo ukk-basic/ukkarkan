@@ -1,4 +1,10 @@
 <?= validation_errors()?>
+
+<?php 
+  if (!empty($error)){
+    echo $error;
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -143,7 +149,7 @@ button{
     
 
         
-        <form method="POST" action="<?= base_url('masyarakat/login');?>">
+        <form method="POST" action="<?= base_url('petugas/login');?>">
         <h3>Login</h3>
         <label for="username">Username</label>
         <input type="text" placeholder="Username" id="username" name="username">
@@ -152,11 +158,7 @@ button{
         <input type="password" placeholder="Password" id="password" name="password">
 
         <button type="submit">Log In</button>
-        <div class="social">
-            <a href="<?= base_url('masyarakat/registrasi') ?>" class="registrasi">Registrasi</a>
-          <!-- <div class="registrasi" ><i class="fa fa-id-card-o" ></i>  registrasi</div> -->
-          
-        </div>
+        
     </form>
 </body>
 </html>

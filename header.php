@@ -4,30 +4,58 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+    
   </head>
-  <body>
-  <header>
-  <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="">Aplikasi | Pengaduan Masyarakat</a>
+    <body>
+    <header>
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Aplikasi | Pengaduan Masyarakat</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <?php
-        if($this->session->login_status=='ok'){
+        if($this->session->login_status_petugas=='ok'){
           echo '<li class="nav-item">
-          <a class="nav-link " aria-current="page" href="">Pengaduan</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="'.base_url('masyarakat/logout').'">Logout</a>
+          <a class="nav-link " aria-current="page" href="'.base_url('petugas/pengaduan').'">Pengaduan</a>
         </li>';
-        }else{
-          echo ' <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="'.base_url('masyarakat/registrasi').'">Registrasi</a>
+          if($this->session->level=='admin'){
+            echo'<li class="nav-item">
+            <a class="nav-link " aria-current="page" href="'.base_url('petugas/petugas').'">Petugas</a>
+          </li>';
+          }
+
+          echo'<div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Generate Laporan
+              </button>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="'.base_url('petugas/cetakLaporan').'" target="_blank">Selesai</a></li>
+                <li><a class="dropdown-item" href="'.base_url('petugas/cetakLaporan2').'" target="_blank" >Proses</a></li>
+                
+              </ul>
+            </li>
+          </ul>
+        </div>';
+        
+
+        echo  '<li class="nav-item">
+          <a class="nav-link " aria-current="page" href="'.base_url('petugas/logout').'">Logout</a>
         </li>';
+
         }
 ?>
       </ul>
